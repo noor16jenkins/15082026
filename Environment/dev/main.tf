@@ -2,7 +2,7 @@ variable "rg" {}
 variable "SA" {}
 module "resource_group" {
   source = "../../Module/01_Azurerm_Rg"
-  rg    = var.rg
+  rg     = var.rg
 }
 
 module "storage_account" {
