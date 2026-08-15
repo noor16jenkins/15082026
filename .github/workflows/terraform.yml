@@ -3,11 +3,9 @@ name: Terraform CI
 on:
   push:
     branches:
-      - master
+      - feature/github-pipelineRg
 
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
 
 permissions:
   contents: read
