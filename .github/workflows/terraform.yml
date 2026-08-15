@@ -1,4 +1,4 @@
-name: Terraform CI
+name: Terraform Validate and Plan
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-        terraform_version: 1.14.7
+          terraform_version: 1.14.7
 
       - name: Terraform Init
         run: terraform init
