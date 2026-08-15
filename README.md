@@ -1,0 +1,2 @@
+# 15082026
+creating_rg_storage_account
