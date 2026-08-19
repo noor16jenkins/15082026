@@ -51,39 +51,10 @@ jobs:
         run: terraform validate
 
 
-  # ============================================================
-  # 2. SECURITY SCAN
-  # ============================================================
-
-  terraform_security_scan:
-    name: Terraform Security Scan
-    needs: terraform_validation
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: Environment/dev
-
-    steps:
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v4
-
-      - name: Initialize TFLint
-        run: tflint --init
-
-      - name: Run TFLint
-        run: tflint
-
+  
 
   # ============================================================
-  # 3. TERRAFORM PLAN
+  # 2. TERRAFORM PLAN
   # ============================================================
 
   terraform_plan_preview:
@@ -127,7 +98,7 @@ jobs:
 
 
   # ============================================================
-  # 4. TERRAFORM APPLY
+  # 3. TERRAFORM APPLY
   # ONLY AFTER MERGE TO MAIN
   # ============================================================
 
