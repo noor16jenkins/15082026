@@ -1,6 +1,8 @@
 name: Terraform_CI_CD
+
 permissions:
   contents: read
+
 on:
   push:
     branches:
@@ -20,7 +22,11 @@ jobs:
 
   terraform_validation:
     name: Terraform Validation
-    runs-on: ubuntu-latest ########github ak vm allocate kareg---runner-----github runner 
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Environment/dev
 
     steps:
 
@@ -39,7 +45,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Format Check
-        run: terraform fmt
+        run: terraform fmt -check
 
       - name: Terraform Validate
         run: terraform validate
@@ -53,6 +59,10 @@ jobs:
     name: Terraform Security Scan
     needs: terraform_validation
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Environment/dev
 
     steps:
 
@@ -72,16 +82,18 @@ jobs:
         run: tflint
 
 
-
   # ============================================================
   # 3. TERRAFORM PLAN
-  # Runs on feature push, PR and main
   # ============================================================
 
   terraform_plan_preview:
     name: Terraform Plan
     needs: terraform_security_scan
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Environment/dev
 
     steps:
 
@@ -100,7 +112,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -out=dev.tfplan -var-file=Environment/dev/terraform.tfvars
+        run: terraform plan -out=dev.tfplan -var-file=terraform.tfvars
 
       - name: Generate Human Readable Plan
         run: terraform show dev.tfplan > plan.txt
@@ -110,8 +122,8 @@ jobs:
         with:
           name: terraform-plan
           path: |
-            dev.tfplan
-            plan.txt
+            Environment/dev/dev.tfplan
+            Environment/dev/plan.txt
 
 
   # ============================================================
@@ -129,6 +141,10 @@ jobs:
 
     environment: dev
 
+    defaults:
+      run:
+        working-directory: Environment/dev
+
     steps:
 
       - name: Checkout Code
@@ -146,7 +162,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -out=dev.tfplan -var-file=Environment/dev/terraform.tfvars
+        run: terraform plan -out=dev.tfplan -var-file=terraform.tfvars
 
       - name: Terraform Apply
         run: terraform apply -auto-approve dev.tfplan
