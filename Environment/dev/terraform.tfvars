@@ -1,12 +1,12 @@
 rg = {
   rg1 = {
     name     = "Noor08"
-    location = "Central India"
+    location = "westus"
 
   }
   rg2 = {
     name     = "Red"
-    location = "Central India"
+    location = "westus"
   }
 }
 
