@@ -13,13 +13,13 @@ rg = {
 SA = {
   sa1 = {
     name                = "noorsa"
-    location            = "Central India"
+    location            = "westus"
     resource_group_name = "Noor08"
 
   }
   sa2 = {
     name                = "noor2sa"
-    location            = "Central India"
+    location            = "westus"
     resource_group_name = "Red"
 
   }
