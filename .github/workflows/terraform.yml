@@ -100,7 +100,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -out=dev.tfplan -var-file=dev.tfvars
+        run: terraform plan -out=dev.tfplan -var-file=terraform.tfvars
 
       - name: Generate Human Readable Plan
         run: terraform show dev.tfplan > plan.txt
