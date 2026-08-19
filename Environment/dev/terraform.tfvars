@@ -5,22 +5,22 @@ rg = {
 
   }
   rg2 = {
-    name     = "Red"
+    name     = "Redvala"
     location = "westus"
   }
 }
 
 SA = {
   sa1 = {
-    name                = "noorsa"
+    name                = "noornoorsa"
     location            = "westus"
     resource_group_name = "Noor0b8"
 
   }
   sa2 = {
-    name                = "noor2sa"
+    name                = "noornoor2sa"
     location            = "westus"
-    resource_group_name = "Red"
+    resource_group_name = "Redvala"
 
   }
 }
