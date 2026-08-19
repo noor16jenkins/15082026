@@ -14,7 +14,7 @@ SA = {
   sa1 = {
     name                = "noorsa"
     location            = "westus"
-    resource_group_name = "Noor08"
+    resource_group_name = "Noor0b8"
 
   }
   sa2 = {
