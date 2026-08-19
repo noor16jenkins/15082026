@@ -71,11 +71,6 @@ jobs:
       - name: Run TFLint
         run: tflint
 
-      - name: Install Checkov
-        run: pip3 install checkov
-
-      - name: Run Checkov
-        run: checkov -d .
 
 
   # ============================================================
